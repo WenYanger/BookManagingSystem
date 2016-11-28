@@ -47,14 +47,10 @@
 </html>
 
 <?php
-/**
- * Created by PhpStorm.
- * User: win10
- * Date: 2016/11/27
- * Time: 20:26
- */
-
 require_once("SupportedFiles/Login.php");
+require_once("SupportedFiles/Db.php");
+// 定义变量并设置为空值
+$user_id = $password = "";
 switch($_POST["submit"]){
     case 'login':
         $user_id = $_POST["user_input"];

@@ -6,8 +6,8 @@ class Login{
 		$connect = Db::getInstance()->connect();
 		if($connect){ 
 			$sql = "select * from User where user_id='{$user_id}'";
-			$result = mysql_query($sql,$connect);
-			$info = mysql_fetch_array($result);
+			$result = $connect->query($sql);
+			$info = $result->fetch_array();
 			//一定要区分大小写，与数据库中的保持一致
 			if($info[password] == $password){
 				/*echo "<script>alert('Login Success!');</script>";

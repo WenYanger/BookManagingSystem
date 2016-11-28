@@ -1,18 +1,18 @@
 <?php
-require_once("SupportedFiles/Db.php");
-require_once("SupportedFiles/Response.php");
+require_once("Db.php");
+require_once("Response.php");
 class Register{
 	static public function regist($user_id,$password){
 		$connect = Db::getInstance()->connect();
 		if($connect){ 
 			if(self::checkUserAvailability($user_id)){
-				$sql = "insert into User value ('".$user_id."','".$password."','Male')";
-			    $result = mysql_query($sql,$connect);
+				$sql = "insert into User value ('".$user_id."','".$password."')";
+			    $result = $connect->query($sql);
 				if($result){
 					Response::show(404,'Register Success');
 					return 404;
 				}else{
-					Response::show(405,mysql_error());
+					Response::show(405,mysqli_error($connect));
 					return 405;
 				}
 			} else {
@@ -28,8 +28,8 @@ class Register{
 		$connect = Db::getInstance()->connect();
 		if($connect){ 
 			$sql = "select * from User where user_id='{$user_id}'";
-			$result = mysql_query($sql,$connect);
-			$number = mysql_fetch_row($result);
+			$result = $connect->query($sql);
+			$number = mysqli_fetch_row($result);
 			if($number==0){
 				return true;
 			}else{
