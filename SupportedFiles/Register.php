@@ -6,7 +6,7 @@ class Register{
 		$connect = Db::getInstance()->connect();
 		if($connect){ 
 			if(self::checkUserAvailability($user_name)){
-				$sql = "insert into 'user' (username,password) VALUES ('".$user_name."','".$password."')";
+				$sql = "insert into `user` (username,password) VALUES ('".$user_name."','".$password."')";
 			    $result = $connect->query($sql);
 				if($result){
 					Response::show(404,'Register Success');
@@ -24,10 +24,10 @@ class Register{
 			return 402;
 		}
 	}
-	static public function checkUserAvailability($user_name){
+	private function checkUserAvailability($user_name){
 		$connect = Db::getInstance()->connect();
 		if($connect){ 
-			$sql = "select * from 'user' where username='{$user_name}'";
+			$sql = "select * from `user` where username='{$user_name}'";
 			$result = $connect->query($sql);
 			$number = mysqli_fetch_row($result);
 			if($number==0){

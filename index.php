@@ -59,7 +59,7 @@ switch(@$_POST["submit"]){
         } else {
             switch(Login::log_in($user_id,$password)){
                 case 400:
-                    $url = './main.php';
+                    $url = './home.php';
                     echo ("<script>window.location.href=('".$url."');</script>");
                     break;
                 case 401:
