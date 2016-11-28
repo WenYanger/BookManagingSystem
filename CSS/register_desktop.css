@@ -1,0 +1,172 @@
+@charset "UTF-8";
+/* CSS Document */
+body {
+	font-size: 16px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+#Whole {
+	height: 800px;
+	margin: 0 auto;
+}
+#Content {
+	height: 500px;
+	width: 500px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	background: rgba(123,213,255,0.8);
+	border-radius: 15px;
+	box-shadow: 4px 2px 6px #333333;
+}
+#Banner {
+	position: relative;
+	float: left;
+	width: 500px;
+	height: 120px;
+	background-color: #FFF;
+	border-radius: 15px 15px 0 0;
+}
+#banner_text {
+	width: 350px;
+	height: 120px;
+	margin-top: -38px;
+	margin-left: 115px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+#Banner p {
+	font-size: 24px;
+	line-height: 1px;
+	letter-spacing: 10px;
+	font: 60px "Microsoft YaHei";
+}
+#user_div {
+	position: relative;
+	float: left;
+	width: 500px;
+	height: 76px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	font: 15px "lucida Grande", Verdana, "Microsoft YaHei";
+}
+#user_input {
+	width: 293px;
+	height: 35px;
+	margin: 0px 0 0 0px;
+	padding-left: 20px;
+	font-size: 16px;
+	border-radius: 0.7em;
+	background: none;
+	border: rgba(153,153,153,0.8) solid 2px;
+}
+#userTips {
+	position: absolute;
+	display: block;
+	color: #999;
+	top: 31px;
+	left: 112px;
+}
+#userOuter {
+	position: relative;
+	width: 320px;
+	height: 40px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#password_div {
+	float: left;
+	position: relative;
+	width: 500px;
+	height: 76px;
+}
+#password_input, #password_confirm {
+	width: 293px;
+	height: 35px;
+	margin: 0px 0 0 0px;
+	padding-left: 20px;
+	font-size: 16px;
+	border-radius: 0.7em;
+	background: none;
+	border: rgba(153,153,153,0.8) solid 2px;
+}
+#passwordTips, #passwordTipsConfirm {
+	position: absolute;
+	font: 15px "lucida Grande", Verdana, "Microsoft YaHei";
+	color: #999;
+	display: block;
+	top: 31px;
+	left: 112px;
+}
+#passOuter {
+	position: relative;
+	width: 320px;
+	height: 40px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#loginButtonDiv {
+	position: relative;
+	float: left;
+	width: 500px;
+	height: 76px;
+}
+#buttonText {
+	position: absolute;
+	font: 30px "lucida Grande", Verdana, "Microsoft YaHei";
+	color: #FFF;
+	margin-top: -26px;
+	margin-left: 130px;
+	z-index: 1;
+	letter-spacing: 10px;
+	-webkit-user-select: none;
+	display: block;
+}
+#buttonOuter {
+	position: relative;
+	width: 320px;
+	height: 100px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#loginButton {
+	position: absolute;
+	width: 325px;
+	height: 47px;
+	font-size: 0px;
+	z-index: 0;
+	outline: none;
+	border: 0;
+	background-color: #09F;
+	border-radius: 10px;/*background-image:url(../image/login.png);*/
+}
+#loginButton:hover {
+	/*background-image:url(../image/login_hover.png);*/
+	opacity: 0.6;
+	cursor: pointer;
+}
+#foot {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	background-color: #FFF;
+	margin-top: 45px;
+	margin-left: 30px;
+	border-radius: 20px;
+	text-decoration: none;
+	box-shadow: 2px 2px 6px #333333;
+}
+#foot h1 {
+	color: #09F;
+	margin-top: 4px;
+	margin-left: 10px;
+	text-decoration: none;
+}
+#foot:hover {
+	background-color: #39F;
+}
