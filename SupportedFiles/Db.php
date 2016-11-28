@@ -28,7 +28,6 @@ class Db{
 				die('mysql connect error'.mysqli_error(self::$_connectSource));
 			}
 		}
-		
 		return self::$_connectSource;
 	}
 }
