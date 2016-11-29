@@ -23,7 +23,7 @@
         	<div class="search_condition">
             	<ul class="search_type">
                 	<li class="curr"> 馆藏目录 </li>
-                    <li class> 外文搜索 </li>
+                    <li class> 搜索 </li>
                     <li class> 中文搜索 </li>
                 </ul>
             </div>
