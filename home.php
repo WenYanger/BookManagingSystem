@@ -4,14 +4,35 @@
 <meta charset="utf-8">
 <title>星辰图书管理系统</title>
 <link type="text/css" rel="stylesheet" href="CSS/home_desktop.css" media="only screen and (min-width:480px)"/>
+<script type="text/javascript" src="JavaScript/PerfectMove.js"></script>
+<script>
+	var shown = false;
+	function show_loginContent(){
+		var loginContent = document.getElementsByClassName('login_content')[0];
+		if(shown==false){
+			shown = true;
+			startMove(loginContent,{'opacity':100});
+		}else{
+			shown = false;
+			startMove(loginContent,{'opacity':0});
+		}
+	}
+</script>
 </head>
 
 <body>
     <div class="header">
     	<div class="header_content">
-        	<a class="login" href=#>
+        	<a class="login" href="javascript:show_loginContent();">
             	<span class="cha-vers">登录</span>
             </a>
+        </div>
+        <div class="login_content" style="display: block;">
+        	<form method="post" action="SupportedFiles/Home_Function.php">
+            	<input type="text" name="username" class="login_content_input">
+                <input type="text" name="password" class="login_content_input">
+                <input type="submit" name="login_submit" class="login_content_submit">
+            </form>
         </div>
     </div>
     <div class="intro_content">
@@ -26,6 +47,14 @@
                     <li class> 英文搜索 </li>
                     <li class> 中文搜索 </li>
                 </ul>
+            </div>
+            <div class="search_text">
+            	<span class="search_button_text">搜索</span>
+            	<form method="post" action="SupportedFiles/Home_Function.php">
+            		<input type="text" name="search_text" class="search_input">
+                	<input type="submit" class="search_button1">
+                </form>
+                
             </div>
         </div>
     </div>
