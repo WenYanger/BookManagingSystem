@@ -10,7 +10,7 @@
     <div class="header">
     	<div class="header_content">
         	<a class="login" href=#>
-            	<span>登录</span>
+            	<span class="cha-vers">登录</span>
             </a>
         </div>
     </div>
@@ -23,11 +23,38 @@
         	<div class="search_condition">
             	<ul class="search_type">
                 	<li class="curr"> 馆藏目录 </li>
-                    <li class> 搜索 </li>
+                    <li class> 英文搜索 </li>
                     <li class> 中文搜索 </li>
                 </ul>
             </div>
         </div>
+    </div>
+    <div class="nav_content_div">
+    	<div class="nav_content">
+        	<div class="nav_content_left">
+            	<div class="nav_content_left_content">
+                </div>
+            </div>
+            <div class="nav_content_right">
+            	<div class="nav_content_left_content">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="manager_div">
+    	<div class="manager">
+        	<a href="http://www.uestc.edu.cn" class="manager_div_school">
+            	<span class="cha-vers">学校首页</span>
+            </a>
+            <a href="http://www.uestc.edu.cn" class="manager_div_studio">
+            	<span class="cha-vers">星辰工作室</span>
+            </a>
+            <a href="http://www.uestc.edu.cn" class="manager_div_manage">
+            	<span class="cha-vers">后台管理</span>
+            </a>
+        </div>
+    </div>
+    <div class="foot">
     </div>
 </body>
 </html>
