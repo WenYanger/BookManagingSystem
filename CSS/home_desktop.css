@@ -39,30 +39,162 @@ body {
 	color:#FFFFFF;
 	text-decoration:none;
 }
-
-.login_content {
+.login_register_outer_content{
 	position: absolute;
 	top:50px;
 	right:0px;
-	width: 300px;
-	height:300px;
-	background:#000000;
+	width: 350px;
+	height:350px;
+	background:#000;
 	border-radius:0.7em;
 	opacity: 0;
+	z-index:99;
+	text-align:center;
+}
+.login_content {
+	position: absolute;
+	right:0px;
+	width: 350px;
+	height:350px;
+	background:#000;
+	border-radius:0.7em;
+	opacity: 1;
 	z-index:100;
 	text-align:center;
 }
 
 .login_content_input{
-	margin-top: 20px;
-	width:200px;
-	line-height:30px;
-	border-radius:0.3em;
+	margin-top: 30px;
+	padding-left:10px;
+	width:280px;
+	line-height:50px;
+	font-size:15px;
+	color:#464445;
+	border-radius:0.6em;
+	border: rgba(153,153,153,0.8) solid 2px;
 }
 .login_content_submit{
-	width:250px;
+	margin-top: 30px;
+	width:300px;
 	height:50px;
+	font-family: "Microsoft YaHei";
+	border-radius:0.7em;
 }
+.login_content_submit:hover{
+	background:#FFFFFF;
+}
+
+.user_content {
+	position: absolute;
+	top:50px;
+	right:0px;
+	width: 350px;
+	height:350px;
+	background:#000;
+	border-radius:0.7em;
+	opacity: 0;
+	z-index:100;
+	text-align:center;
+}
+.user_content .user_basicInfo{
+	width:350px;
+	height:100px;
+	background:#8A8A8A;
+}
+.user_content .user_image{
+	position:absolute;
+	width:70px;
+	height:70px;
+	left:10px;
+	top:10px;
+	background:#A22123;
+}
+.user_content .user_info{
+	position:absolute;
+	width:250px;
+	height:80px;
+	left:90px;
+	top:10px;
+	background:#A22123;
+}
+.user_info ul{
+	position:absolute;
+	top:-10px;
+	left:-30px;
+	list-style:none;
+}
+.user_info ul li{
+	
+	color:#FFFFFF;
+	text-decoration:none;
+}
+.user_content .user_bookInfo{
+}
+.logout_button{
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	width:350px;
+	height:30px;
+	background:#490001;
+	color:#FFFFFF;
+	border: rgba(153,153,153,0.8) solid 2px;
+}
+.logout_button:hover{
+	background:#870103;
+}
+
+.OtherButton {
+	margin: 45px 20px 10px auto;
+	width: 220px;
+	height: 25px;
+	font-size: 12px;
+	font-family: "Microsoft YaHei";
+	font-weight: 100;
+	color: #06F;
+}
+.OtherButton a{
+	text-decoration:none;
+	color:#FFF;
+}
+.OtherButton a:hover{
+	text-decoration:none;
+	color:#AFAFAF;
+}
+.dotted{
+	color:#FFF;
+}
+
+.register_content{
+	position: absolute;
+	right:0px;
+	padding-top:30px;
+	width: 350px;
+	height:350px;
+	background:#000;
+	border-radius:0.7em;
+	opacity: 0;
+	z-index:101;
+	text-align:center;
+}
+.register_content_input{
+	margin-top: 25px;
+	padding-left:10px;
+	width:280px;
+	line-height:40px;
+	font-size:15px;
+	color:#464445;
+	border-radius:0.6em;
+	border: rgba(153,153,153,0.8) solid 2px;
+}
+.register_content_submit{
+	margin-top: 25px;
+	width:300px;
+	height:40px;
+	font-family: "Microsoft YaHei";
+	border-radius:0.7em;
+}
+
 
 
 .intro_content {
@@ -255,7 +387,14 @@ body {
 .cha-vers{
 	color:#726E6E;
 	text-decoration:none;
+	-moz-user-select:none;/*火狐*/
+
+	-webkit-user-select:none;/*webkit浏览器*/
+	-ms-user-select:none;/*IE10*/
+	-khtml-user-select:none;/*早期浏览器*/
+	user-select:none;
 }
 .cha-vers:hover{
 	color:#FFFFFF;
+	cursor:pointer;
 }
