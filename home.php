@@ -5,36 +5,140 @@
 <title>星辰图书管理系统</title>
 <link type="text/css" rel="stylesheet" href="CSS/home_desktop.css" media="only screen and (min-width:480px)"/>
 <script type="text/javascript" src="JavaScript/PerfectMove.js"></script>
+<script type="text/javascript" src="JavaScript/HomeFunction.js"></script>
+<script type="text/javascript" src="JavaScript/JQuery/jquery-3.1.1.js"></script>
 <script>
-	var shown = false;
-	function show_loginContent(){
-		var loginContent = document.getElementsByClassName('login_content')[0];
-		if(shown==false){
-			shown = true;
-			startMove(loginContent,{'opacity':100});
+
+//全局变量
+var login_status = 0;
+var current_user = "Default User";
+var shown = false;
+var changed = false;
+
+function show_register_content(){
+	var login_register_outer_content = document.getElementById('login_register_outer_content');
+	var register_content = document.getElementById('register_content');
+	$('#login_content').css('display','none');
+	$('#register_content').css('display','block');
+	startMove(login_register_outer_content,{'opacity':100,'height':450});
+	startMove(register_content,{'opacity':100});
+}
+
+function hide_register_content(){
+	var login_register_outer_content = document.getElementById('login_register_outer_content');
+	var registerContent = document.getElementById('register_content');
+	var loginContent = document.getElementById('login_content');
+	changed = true;
+	
+	startMove(registerContent,{'opacity':0});
+	startMove(loginContent,{'opacity':100});
+	startMove(login_register_outer_content,{'height':350});
+	$('#register_content').css('display','none');
+	$('#login_content').css('display','block');
+}
+	
+window.onload = function(){
+	
+	$('#header_content').click(function(){
+		if(login_status == 0){
+			var loginContent = document.getElementsByClassName('login_register_outer_content')[0];
+			if(shown==false){
+				shown = true;
+				startMove(loginContent,{'opacity':100});
+			}else{
+				shown = false;
+				startMove(loginContent,{'opacity':0});
+			}
+		}else if(login_status == 1){
+			var userContent = document.getElementsByClassName('user_content')[0];
+			if(shown==false){
+				shown = true;
+				startMove(userContent,{'opacity':100});
+			}else{
+				shown = false;
+				startMove(userContent,{'opacity':0});
+			}
+		}
+	});
+	
+	//登录前，登录界面悬停显示
+	$('#login_register_outer_content').mouseleave(function(){
+		if(changed == true){
 		}else{
 			shown = false;
-			startMove(loginContent,{'opacity':0});
+			var login_content = document.getElementsByClassName('login_register_outer_content')[0];
+			startMove(login_content,{'opacity':0});
 		}
-	}
+	});
+	$('#login_register_outer_content').mouseenter(function(){
+		if(changed == true){
+			changed = false;
+		}
+	});
+	
+	//登录后，用户信息界面悬停显示
+	$('#user_content').mouseleave(function(){
+		shown = false;
+		var user_content = document.getElementsByClassName('user_content')[0];
+		startMove(user_content,{'opacity':0});
+	});
+	
+};
 </script>
 </head>
 
 <body>
-    <div class="header">
-    	<div class="header_content">
-        	<a class="login" href="javascript:show_loginContent();">
-            	<span class="cha-vers">登录</span>
+    <div class="header"">
+    	<div class="header_content" id="header_content">
+        	<a class="login"">
+            	<span class="cha-vers" id="user_name1" style="display:block;">登录</span>
+                <span class="cha-vers" id="user_name2" style="display:none;">登录</span>
             </a>
         </div>
-        <div class="login_content" style="display: block;">
-        	<form method="post" action="SupportedFiles/Home_Function.php">
-            	<input type="text" name="username" class="login_content_input">
-                <input type="text" name="password" class="login_content_input">
-                <input type="submit" name="login_submit" class="login_content_submit">
-            </form>
+        <div class="login_register_outer_content" id="login_register_outer_content">
+            <div class="login_content" id="login_content" style="display: block;">
+                <form method="post" id="login">
+                    <input type="text" name="username" class="login_content_input" placeholder="支持QQ号/邮箱/手机号登录">
+                    <input type="text" name="password" class="login_content_input" placeholder="密码">
+                    <input type="text" name="function_id" value="log" style="display:none">
+                    <!--<input type="submit" name="login_submit" class="login_content_submit" value="登录">-->
+                    <button type="button" class="login_content_submit" id="login_submit" onClick="login()">登录</button>
+                </form>
+                <div class="OtherButton"> 
+                    <a href="forget_password.php" class="link" id="forgetpwd" target="_blank">忘了密码？</a>&nbsp; <span class="dotted">|</span> &nbsp;
+                    <a href="javascript:show_register_content()" class="link" target="_parent">注册新账号</a> &nbsp;<span class="dotted">|</span> &nbsp;
+                    <a href="register.php" class="link" target="_blank">意见反馈</a> 
+                </div>
+            </div>
+            <div class="register_content"  id="register_content" style="display: none;">
+            	<span style="position:relative;  color:#FFFFFF; font-size:24px;">星辰快速注册</span>
+                <form method="post" id="register">
+                    <input type="text" name="register_username"         class="register_content_input" placeholder="支持QQ号/邮箱/手机号注册">
+                    <input type="text" name="register_password"         class="register_content_input" placeholder="密码">
+                    <input type="text" name="register_confirm_password" class="register_content_input" placeholder="确认密码">
+                    <input type="text" name="function_id" value="reg" style="display:none">
+                    <button type="button" class="register_content_submit" id="register_submit" style="background:#BCFFC0;">注册</button>
+                    <button type="button" class="register_content_submit" id="register_submit" style="background:#FF7275;" onClick="hide_register_content()">取消</button>
+                </form>
+            </div>
         </div>
+        <div class="user_content" id="user_content" style="display: none;">
+            <div class="user_basicInfo">
+                <div class="user_image"></div>
+                <div class="user_info">
+                	<ul>
+                    	<li id="li_username"></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user_bookInfo">
+            	<button type="button" class="logout_button" id="logout_button" onClick="logout()">退出</button>
+            </div>
+        </div>
+       
     </div>
+    
     <div class="intro_content">
     	<img src="Image/logo_StarStudio_UESTC.png">
     </div>

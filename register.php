@@ -22,7 +22,7 @@ function changeBorder(id,text){
 <body>
 <div id="Whole">
   <div id="Content">
-    <div id="Banner"> <a id="foot" href="index.php" onMouseOver="changeColor('foot_text','#FFF')" onMouseOut="changeColor('foot_text','#09F')">
+    <div id="Banner"> <a id="foot" href="home.php" onMouseOver="changeColor('foot_text','#FFF')" onMouseOut="changeColor('foot_text','#09F')">
       <h1 id="foot_text" style="color=#09F"><</h1>
       </a>
       <div id="banner_text">

@@ -1,0 +1,194 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	font-size: 9px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+.Whole {
+}
+.Banner {
+	position: fixed;
+	_position: static;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 62px;
+	zoom: 1;
+	border-bottom: 1px solid #d6dfea;
+	background-color: rgba(255,0,0,1);
+}
+.Content {
+	position: fixed;
+	_position: static;
+	left: 0;
+	right: 0;
+	top: 62px;
+	bottom: 0;
+	zoom: 1;
+	background-color: rgba(0,153,204,1);
+}
+.ContentLeft {
+	position: fixed;
+	_position: static;
+	left: -250px;
+	top: 62px;
+	bottom: 0;
+	width: 300px;
+	zoom: 1;
+	background-color: rgba(0,0,0,0.4);
+	z-index:10;
+}
+.ContentLeft_blur{
+	position: fixed;
+	_position: static;
+	left: -250px;
+	top: 62px;
+	bottom: 0;
+	width: 300px;
+	zoom: 1;
+	background:inherit;
+	opacity:0.5;
+	filter: blur(5px);
+}
+.ContentLeft_userDiv {
+	float: left;
+	width: 300px;
+	height: 200px;
+}
+#ContentLeft_userPicture {
+	position: relative;
+	height: 100px;
+	width: 100px;
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 50px;
+}
+#ContentLeft_userPicture img {
+	height: 100%;
+	width: 100%;
+	border-radius: 50px;
+}
+#ContentLeft_userInfo {
+	position: relative;
+	height: 40px;
+	width: 200px;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+#ContentLeft_userInfo p {
+	color: rgba(255,255,255,1);
+	font: 18px "lucida Grande", Verdana, "Microsoft YaHei";
+}
+.ContentLeft_functionSelectDiv {
+	float: left;
+	width: 300px;
+	height: 500px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+}
+/*
+.ContentLeft_functionSelectDiv ul li {
+	list-style-type: none;
+}
+.ContentLeft_functionSelectDiv ul li a {
+	display: block;
+	width: 300px;
+	height: 40px;
+	margin-left: -40px;
+	margin-top: 5px;
+	padding-top: 15px;
+	text-decoration: none;
+	text-align: center;
+	font: 18px "lucida Grande", Verdana, "Microsoft YaHei";
+	color: rgba(255,255,255,1);
+}
+.ContentLeft_functionSelectDiv ul li a:hover {
+	background-color: rgba(255,255,255,0.4);
+}
+*/
+.ContentLeft_functionSelectDiv ul li {
+	display: block;
+	width: 300px;
+	height: 40px;
+	margin-left: -40px;
+	margin-top: 5px;
+	padding-top: 15px;
+	text-decoration: none;
+	text-align: center;
+	font: 18px "lucida Grande", Verdana, "Microsoft YaHei";
+	color: rgba(255,255,255,1);
+	list-style-type: none;
+}
+.ContentLeft_functionSelectDiv ul li:hover {
+	background-color: rgba(255,255,255,0.4);
+}
+.ContentLeft_functionSelectDiv ul li a {
+	display: block;
+	width: 300px;
+	height: 40px;
+	text-decoration: none;
+	color: rgba(255,255,255,1);
+}
+.ContentLeft_specificFunction{
+	width: 300px;
+	height: 40px;
+	display:none;
+	margin-top:-10px;
+	opacity:0;
+	background-color:rgba(0,51,204,1);
+}
+
+.ContentRight {
+	position: absolute;
+	_position: static;
+	left: 50px;
+	top: 0px;
+	bottom: 0;
+	right:0px;
+	zoom: 1;
+	border:1px solid rgba(153,0,102,1);
+}
+
+.ContentRight_PostBlog{
+	position:absolute;
+	left: 5px;
+	top: 5px;
+	right:5px;
+	height:300px;
+	background-color:rgba(0,0,0,1);
+}
+
+.ContentRight_PostBlogLogo{
+	position:absolute;
+	left:75px;
+	top:70px;
+	width:200px;
+	height:40px;
+	z-index:2;
+}
+
+.ContentRight_PostBlogLogo p{
+	margin-top:-1px;
+	font: 18px "lucida Grande", "Microsoft YaHei";
+
+}
+
+#ContentRight_PostBlogMain_blogInput{
+	position:absolute;
+	top:50px;
+	left:50px;
+	right:50px;
+	bottom:50px;
+	height:180px;
+	font-size:36px;
+	padding:10px;
+	border-radius:10px;
+	z-index:1;
+}
