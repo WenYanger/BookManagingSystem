@@ -5,6 +5,7 @@
 <title>星辰图书管理系统</title>
 <link type="text/css" rel="stylesheet" href="CSS/home_desktop.css" media="only screen and (min-width:480px)"/>
 <script type="text/javascript" src="JavaScript/PerfectMove.js"></script>
+<script type="text/javascript" src="JavaScript/HomeFunction.js"></script>
 <script type="text/javascript" src="JavaScript/JQuery/jquery-3.1.1.js"></script>
 <script>
 
@@ -83,75 +84,6 @@ window.onload = function(){
 	});
 	
 };
-	
-	
-
-	//登陆逻辑
-	function login(){
-		$.ajax({
-			type: "POST",
-			dataType:"html",
-			url:"SupportedFiles/Home_Function.php",
-			data:$('#login').serialize(),
-			async: true,
-			error: function(request) {
-				alert("Connection error");
-			},
-			success: function(data) {
-				//$("#commonLayout_appcreshi").parent().html(data);
-				/**
-					根据data返回值的数字status_code，判断登录情况
-					400：登录成功
-					401：密码错误
-					402：服务器数据库连接失败
-					403: 用户未注册
-					404: 用户名不合法
-				*/
-				var result_json = JSON.parse(data); //由JSON字符串转换为JSON对象
-				current_user = result_json.username;
-				var status_code = result_json.code;
-				var user_name = result_json.username;
-				switch(status_code){
-					case 400:
-						login_status = 1;
-						$('#user_name1').css('display','none');
-						$('#user_name2').css({'display':'block','width':'300px'});
-						$('#user_name2').html("欢迎你！"+user_name);
-						
-						$('#login_content').css('display','none');
-						$('#user_content').css('display','block');
-						
-						//填充用户详细信息
-						document.getElementById("li_username").innerHTML=current_user;
-						break;
-					case 401:
-						break;
-					case 402:
-						break;
-					case 403:
-						alert('该用户名未注册!');
-						break;
-					case 404:
-						alert('用户名不合法!');
-						break;
-					default:
-						alert(data);
-						break;
-				}
-			}
-		});
-	};
-	//退出登录
-	function logout(){
-		login_status = 0;
-		$('#user_name1').css('display','block');
-		$('#user_name2').css({'display':'none'});
-		$('#user_name2').html("登录");
-		
-		$('#login_content').css('display','block');
-		$('#user_content').css('display','none');
-	};
-	
 </script>
 </head>
 
@@ -168,6 +100,7 @@ window.onload = function(){
                 <form method="post" id="login">
                     <input type="text" name="username" class="login_content_input" placeholder="支持QQ号/邮箱/手机号登录">
                     <input type="text" name="password" class="login_content_input" placeholder="密码">
+                    <input type="text" name="function_id" value="log" style="display:none">
                     <!--<input type="submit" name="login_submit" class="login_content_submit" value="登录">-->
                     <button type="button" class="login_content_submit" id="login_submit" onClick="login()">登录</button>
                 </form>
@@ -180,9 +113,10 @@ window.onload = function(){
             <div class="register_content"  id="register_content" style="display: none;">
             	<span style="position:relative;  color:#FFFFFF; font-size:24px;">星辰快速注册</span>
                 <form method="post" id="register">
-                    <input type="text" name="username"         class="register_content_input" placeholder="支持QQ号/邮箱/手机号注册">
-                    <input type="text" name="password"         class="register_content_input" placeholder="密码">
-                    <input type="text" name="confirm_password" class="register_content_input" placeholder="确认密码">
+                    <input type="text" name="register_username"         class="register_content_input" placeholder="支持QQ号/邮箱/手机号注册">
+                    <input type="text" name="register_password"         class="register_content_input" placeholder="密码">
+                    <input type="text" name="register_confirm_password" class="register_content_input" placeholder="确认密码">
+                    <input type="text" name="function_id" value="reg" style="display:none">
                     <button type="button" class="register_content_submit" id="register_submit" style="background:#BCFFC0;">注册</button>
                     <button type="button" class="register_content_submit" id="register_submit" style="background:#FF7275;" onClick="hide_register_content()">取消</button>
                 </form>

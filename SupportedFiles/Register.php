@@ -9,19 +9,19 @@ class Register{
 				$sql = "insert into `user` (username,password) VALUES ('".$user_name."','".$password."')";
 			    $result = $connect->query($sql);
 				if($result){
-					Response::show(404,'Register Success');
-					return 404;
+					//Response::show(404,'Register Success');
+					return 500;
 				}else{
-					echo Response::show(405,mysqli_error($connect));
-					return 405;
+					//echo Response::show(405,mysqli_error($connect));
+					return 501;
 				}
 			} else {
-				Response::show(403,'User already exists');
-				return 403;
+				//Response::show(403,'User already exists');
+				return 502;
 			}
 		}else{
-			Response::show(402,'Database Failed');
-			return 402;
+			//Response::show(402,'Database Failed');
+			return 503;
 		}
 	}
 	private function checkUserAvailability($user_name){
