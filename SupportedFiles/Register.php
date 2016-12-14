@@ -2,6 +2,18 @@
 require_once("Db.php");
 require_once("Response.php");
 class Register{
+	/**
+	*按注册状态返回注册情况
+	*@param string $user_name 用户名
+	*@param string $password 密码
+	*return int
+	*/
+	/*
+	500：注册成功
+	501：数据库错误
+	502：用户已注册
+	503: 数据库连接失败
+	*/
 	static public function regist($user_name,$password){
 		$connect = Db::getInstance()->connect();
 		if($connect){ 
@@ -24,6 +36,13 @@ class Register{
 			return 503;
 		}
 	}
+	
+	/**
+	*按注册状态返回注册情况
+	*@param string $user_name 用户名
+	*@param string $password 密码
+	*return int
+	*/
 	private function checkUserAvailability($user_name){
 		$connect = Db::getInstance()->connect();
 		if($connect){ 

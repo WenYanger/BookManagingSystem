@@ -74,16 +74,16 @@ function register(){
 				501：数据库错误
 				502：用户已注册
 				503: 数据库连接失败
-				504: 用户名不合法
-				505: 两次输入密码不一致
-				506: 输入不合法
+				504: 两次输入密码不一致
+				505: 输入不合法
 			*/
 			var result_json = JSON.parse(data); //由JSON字符串转换为JSON对象
 			current_user = result_json.username;
 			var status_code = result_json.code;
 			var user_name = result_json.username;
 			switch(status_code){
-				case 400:
+				case 500:
+					alert('注册成功');
 					login_status = 1;
 					$('#user_name1').css('display','none');
 					$('#user_name2').css({'display':'block','width':'300px'});
@@ -95,15 +95,20 @@ function register(){
 					//填充用户详细信息
 					document.getElementById("li_username").innerHTML=current_user;
 					break;
-				case 401:
+				case 501:
+					alert('数据库错误');
 					break;
-				case 402:
+				case 502:
+					alert('用户已注册');
 					break;
-				case 403:
-					alert('该用户名未注册!');
+				case 503:
+					alert('数据库连接失败');
 					break;
-				case 404:
-					alert('用户名不合法!');
+				case 504:
+					alert('两次输入密码不一致');
+					break;
+				case 505:
+					alert('输入不合法');
 					break;
 				default:
 					alert(data);
@@ -123,3 +128,65 @@ function logout(){
 	$('#login_content').css('display','block');
 	$('#user_content').css('display','none');
 };
+
+//搜索逻辑
+function searchBook(){
+	$.ajax({
+		type: "POST",
+		dataType:"html",
+		url:"SupportedFiles/Home_Function.php",
+		data:$('#search').serialize(),
+		async: true,
+		error: function(request) {
+			alert("Connection error");
+		},
+		success: function(data) {
+			/**
+				根据data返回值的数字status_code，判断登录情况
+				500：注册成功
+				501：数据库错误
+				502：用户已注册
+				503: 数据库连接失败
+				504: 两次输入密码不一致
+				505: 输入不合法
+			*/
+			var result_json = JSON.parse(data); //由JSON字符串转换为JSON对象
+			current_user = result_json.username;
+			var status_code = result_json.code;
+			var user_name = result_json.username;
+			switch(status_code){
+				case 500:
+					alert('注册成功');
+					login_status = 1;
+					$('#user_name1').css('display','none');
+					$('#user_name2').css({'display':'block','width':'300px'});
+					$('#user_name2').html("欢迎你！"+user_name);
+					
+					$('#login_content').css('display','none');
+					$('#user_content').css('display','block');
+					
+					//填充用户详细信息
+					document.getElementById("li_username").innerHTML=current_user;
+					break;
+				case 501:
+					alert('数据库错误');
+					break;
+				case 502:
+					alert('用户已注册');
+					break;
+				case 503:
+					alert('数据库连接失败');
+					break;
+				case 504:
+					alert('两次输入密码不一致');
+					break;
+				case 505:
+					alert('输入不合法');
+					break;
+				default:
+					alert(data);
+					break;
+			}
+		}
+	});
+}

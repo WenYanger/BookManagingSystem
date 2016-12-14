@@ -117,7 +117,7 @@ window.onload = function(){
                     <input type="text" name="register_password"         class="register_content_input" placeholder="密码">
                     <input type="text" name="register_confirm_password" class="register_content_input" placeholder="确认密码">
                     <input type="text" name="function_id" value="reg" style="display:none">
-                    <button type="button" class="register_content_submit" id="register_submit" style="background:#BCFFC0;">注册</button>
+                    <button type="button" class="register_content_submit" id="register_submit" style="background:#BCFFC0;" onClick="register()">注册</button>
                     <button type="button" class="register_content_submit" id="register_submit" style="background:#FF7275;" onClick="hide_register_content()">取消</button>
                 </form>
             </div>
@@ -154,9 +154,11 @@ window.onload = function(){
             </div>
             <div class="search_text">
             	<span class="search_button_text">搜索</span>
-            	<form method="post" action="SupportedFiles/Home_Function.php">
+            	<form method="post" action="search.php">
             		<input type="text" name="search_text" class="search_input">
+                    <input type="text" name="search_type" style="display:none">
                 	<input type="submit" class="search_button1">
+                    <input type="text" name="function_id" value="search" style="display:none">
                 </form>
                 
             </div>

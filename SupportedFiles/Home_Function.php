@@ -2,6 +2,12 @@
 require_once("Login.php");
 require_once("Register.php");
 
+$result_array = array(
+	'code' => 0,
+	'info' => '',
+	'username' =>''
+);
+
 if($_POST['function_id'] == 'log'){
 	//登录逻辑
 	if(checkAvailablity($_POST['username']) && checkAvailablity($_POST['password'])){
@@ -28,44 +34,48 @@ if($_POST['function_id'] == 'log'){
 					501：数据库错误
 					502：用户已注册
 					503: 数据库连接失败
+					504: 两次输入密码不一致
+					505: 输入不合法
 			*/
-			switch(Register::regist($username,$password)){
+			$regist_result=Register::regist($username,$password);
+			switch($regist_result){
 				case 500:
-					$result_array = array(
-						'code' => 500
-					);
+					sendResult(500,'Regist Success',$_POST['register_username']);
 					break;
 				case 501:
-					$result_array = array(
-						'code' => 501
-					);
+					sendResult(501,'DataBase Failed');
 					break;
 				case 502:
-					$result_array = array(
-						'code' => 502
-					);
+					sendResult(502,'User Already Existed');
 					break;
 				case 503:
-					$result_array = array(
-						'code' => 503
-					);
+					sendResult(503,'Cannot Connect to DataBase');
 					break;
 				default:
+					sendResult($regist_result,'Error');
 					break;
 			}
 		}else{
-			$result_array = array(
-				'code' => 504,
-				'info' => "两次输入密码不一致"
-			);
-			echo json_encode($result_array);
+			sendResult(504,'两次输入密码不一致');
 		}
 	}else{
-		$result_array = array(
-			'code' => 505,
-			'info' => "输入不合法"
-		);
-		echo json_encode($result_array);
+		sendResult(505,'输入不合法');
+	}
+}else if($_POST['function_id'] == 'search'){
+	//搜索逻辑
+	/**
+			根据字符串，进行搜索
+			500：注册成功
+			501：数据库错误
+			502：用户已注册
+			503: 数据库连接失败
+			504: 两次输入密码不一致
+			505: 输入不合法
+	*/
+	$text=$_POST['search_text'];
+	if(!empty($text)){
+	}else{
+		sendResult(601,'搜索目标字符串不能为空');
 	}
 }
 
@@ -76,7 +86,12 @@ if($_POST['function_id'] == 'log'){
 
 
 
-
+function sendResult($code, $info, $username=''){
+	$result_array['code']=$code;
+	$result_array['info']=$info;
+	$result_array['username']=$username;
+	echo json_encode($result_array);
+}
 
 function checkAvailablity($property){
 	if(isset($property) && !empty($property)){
