@@ -9,6 +9,11 @@ body {
     margin: 0 auto;
     height: 100%;
     overflow-x: hidden;
+	
+	-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
 .header {
@@ -28,21 +33,21 @@ body {
 .header_content .login {
     width: 70px;
     position: relative;
-    float: left;
+    float: right;
     font-size: 12px;
     text-indent: 30px;
 	background: url(../Image/login_SMALL.png) left center no-repeat;
     vertical-align: middle;
     line-height: 25px;
     margin-top: 7px;
-    margin-left: 10px;
+    margin-right: 10px;
 	color:#FFFFFF;
 	text-decoration:none;
 }
 .login_register_outer_content{
 	position: absolute;
 	top:50px;
-	left:0px;
+	right:0px;
 	width: 350px;
 	height:350px;
 	background:#000;
@@ -87,7 +92,7 @@ body {
 .user_content {
 	position: absolute;
 	top:50px;
-	left:0px;
+	right:0px;
 	width: 350px;
 	height:350px;
 	background:#000;
@@ -203,25 +208,228 @@ body {
     margin: 0 auto;
     position: relative;
 }
+.manager_content_div{
+	width: 100%;
+    height: 800px;
+    margin: 0 auto;
+    position: relative;
+	
+
+}
+.manager_content_div .manager_content{
+	width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+    position: relative;
+	
+	padding-top:30px;
+	background:rgba(0,0,0,0.8);
+}
+.manager_content .manager_content_left{
+	width: 200px;
+    height: 700px;
+    position: absolute;
+	left:0px;
+	background:rgba(233,0,0,0.8);
+}
+.manager_content_left ul {
+	margin-left:-40px;
+	margin-top:0px;
+}
+.manager_content_left ul li{
+	list-style:none;
+	width:200px;
+	height:50px;
+	margin-top:2px;
+	background:rgba(41,41,41,1.00);
+	padding-top:20px;
+	text-align:center;
+	color:rgba(255,255,255,1.00);
+	font-size:16px;
+}
+.manager_content_left ul li:hover{
+	cursor:pointer;
+}
+.left_option_title{
+	width:200px;
+	height:50px;
+	color:rgba(255,255,255,1.00);
+	font-size:16px;
+}
+.left_option_suboption{
+	width:200px;
+	height:50px;
+	text-align:center;
+	padding-top:20px;
+	color:rgba(255,255,255,1.00);
+	font-size:16px;
+	background:rgba(134,0,2,1.00);
+	cursor:pointer;
+}
+.left_option_suboption_book{
+	width:200px;
+	height:0px;
+	text-align:center;
+	padding-top:20px;
+	margin-top:7px;
+	color:rgba(255,255,255,1.00);
+	font-size:12px;
+	background:rgba(134,134,2,1.00);
+	display:none;
+}
+.left_option_suboption_book:hover{
+	cursor:pointer;
+}
+.left_option_suboption_user{
+	width:200px;
+	height:0px;
+	text-align:center;
+	padding-top:20px;
+	margin-top:7px;
+	color:rgba(255,255,255,1.00);
+	font-size:12px;
+	background:rgba(134,134,2,1.00);
+	display:none;
+}
+.left_option_suboption_user:hover{
+	cursor:pointer;
+}
+
+.right_option_title{
+	width:200px;
+	height:50px;
+	position:relative;
+	margin:0 auto;
+	margin-top:20px;
+	color:rgba(255,255,255,1.00);
+	font-size:16px;
+}
+
+
+
+.manager_content .manager_content_right{
+	width: 1000px;
+    height: 700px;
+    position: absolute;
+	right:0px;
+	background:rgba(0,233,0,0.8);
+}
+.manager_content_right .manager_content_right_userManagingContent{
+	width: 1000px;
+    height: 700px;
+    position: absolute;
+	right:0px;
+	display:none;
+	background:rgba(123,123,0,0.8);
+}
+.manager_content_right .manager_content_right_bookManagingContent{
+	width: 1000px;
+    height: 700px;
+    position: absolute;
+	right:0px;
+	display:none;
+	background:rgba(0,123,123,0.8);
+}
+
+/*书籍录入界面*/
+.manager_content_right_bookManagingContent .book_input{
+	padding-left:10px;
+	margin-left:20px;
+	margin-top:10px;
+	width:800px;
+	line-height:50px;
+	font-size:15px;
+	color:#464445;
+	border-radius:0.6em;
+	border: rgba(153,153,153,0.8) solid 2px;
+}
+.manager_content_right_bookManagingContent .book_input_submit{
+	width:580px;
+	height:50px;
+	margin-left:20px;
+	margin-top:10px;
+	font-family: "Microsoft YaHei";
+	border-radius:0.7em;
+}
+.manager_content_right_bookManagingContent .book_input_submit:hover{
+	background:#FFFFFF;
+}
+.title{
+	color:rgba(255,255,255,1.00);
+	font-size:16px;
+	width:80px;
+	margin-left:10px;
+}
+.book_line{
+	height:70px;
+	width:1000px;
+	background:rgba(118,0,1,1.00);
+}
+
 .search_content {
     width: 100%;
     margin: 0 auto;
-    height: 269px;
+    height: 130px;
     position: relative;
     text-align: center;
     min-width: 1200px;
 }
 .search_content .search_bg {
-    width: 1341px;
-    height: 266px;
+    width: 100%;
+    height: 130px;
 }
 .search_content .search_field {
     position: relative;
     width: 900px;
     height: 120px;
-    margin: -195px auto 0;
+    margin: 0px auto 0;
 	background: url(../Image/search_field_bg.png) center no-repeat;
 	z-index:2;
+}
+.search_field .search_range {
+	position: relative;
+	float:left;
+	width:100px;
+	height:37px;
+	margin-top:55px;
+	margin-left:48px;
+	padding-top:13px;
+	background:#C10003;
+	
+	font-size:15px;
+	color:#FFFFFF;
+}
+.search_range:hover{
+	cursor:pointer;
+}
+.search_range_options {
+	position:absolute;
+	width:100px;
+	height:180px;
+	left:48px;
+	top:105px;
+	display:none;
+}
+.search_range_options ul{
+	margin-left:-40px;
+	margin-top:2px;
+	
+}
+.search_range_options ul li{
+	width:100px;
+	height:35px;
+	margin-top:3px;
+	padding-top:7px;
+	background:#000000;
+	opacity:0.8;
+	list-style:none;
+	font-size:15px;
+	color:#FFFFFF;
+	display:block;
+}
+.search_range_options ul li:hover{
+	cursor:pointer;
+	opacity:1;
 }
 .search_field .search_condition {
     position: absolute;
@@ -257,11 +465,11 @@ body {
     background: url(../Image/search_keyword_bg.png) center no-repeat;
 }
 .search_field .search_input {
-    width: 660px;
+    width: 560px;
     height: 35px;
     margin-top: 10px;
     float: left;
-    margin-left: 15px;
+    margin-left: 115px;
     font-size: 14px;
     border-style: none;
 }
@@ -343,62 +551,10 @@ body {
     position: relative;
     overflow: hidden;
 }
-.info_content_div{
-	display: block;
-    width: 100%;
-	height:40px;
-	margin: 0 auto;
-    background-color: #f5f5f5;
-	/*border:rgba(153,153,153,0.8) solid 2px;*/
-    position: relative;
-	float:left;
-}
-.info_content_div .info_content{
-	position: relative;
-	width: 1344px;
-	height: 30px;
-    margin: 0 auto;
-	margin-top:5px;
-	background:#000;
-	opacity:0.8;
-	border:rgba(153,153,153,0) solid 2px;
-	color:#FFFFFF;
-	font-size:18px;
-}
-.result_content_div{
-	display: block;
-    width: 100%;
-    height: auto;
-	margin: 0 auto;
-    background-color: #f5f5f5;
-	/*border:rgba(153,153,153,0.8) solid 2px;*/
-    position: relative;
-	float:left;
-}
-.result_content_div .result_content{
-    position: relative;
-	width: 1344px;
-	height: 100px;
-    margin: 0 auto;
-	margin-top:5px;
-	background:#BB0003;
-	border:rgba(153,153,153,0) solid 2px;
-}
-.result_content_top{
-	font-size:16px;
-	color:#000000;
-	background:#BDBDBD;
-}
-.result_content_text{
-	font-size:10px;
-	color:#000000;
-	background:#E1E1E1;
-}
 .manager_div {
     width: 100%;
     height: 100px;
     position: relative;
-	float:left;
     min-width: 1200px;
     background-color: #323232;
 }
@@ -434,7 +590,6 @@ body {
     min-width: 1200px;
     width: 100%;
     position: relative;
-	float:left;
 }
 
 .cha-vers{

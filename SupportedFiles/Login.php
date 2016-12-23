@@ -10,31 +10,44 @@ class Login{
 			$info=mysqli_fetch_array($result,MYSQLI_ASSOC);
 			//一定要区分大小写，与数据库中的保持一致
 			if(@$info["Password"] == $password){
-				/*echo "<script>alert('Login Success!');</script>";
-				  $url = '../Main.php';
-				  echo ("<script>window.open('".$url."');</script>"); 
-				  */
 				$result_array = array(
 					'code' => 400,
-					'username' => $info["UserName"]
+					'username' => $info["UserName"],
+					'usertype' => $info["UserType"]
 				);
 				echo json_encode($result_array);
 				//echo 400;
 			}else if(@$info["Password"] == ""){
-				echo 403;
+				$result_array = array(
+					'code' => 403,
+					'username' => $info["UserName"],
+					'usertype' => $info["UserType"]
+				);
+				echo json_encode($result_array);
 			}else{
 				/*echo "<script>alert('Login Failed!');</script>";
 				return Response::show(401,"Wrong Password");
 				*/
 				//Response::show(401,'Wrong Password');
-				echo 401;
+				$result_array = array(
+					'code' => 401,
+					'username' => $info["UserName"],
+					'usertype' => $info["UserType"]
+				);
+				echo json_encode($result_array);
 			}
 		}else{
 			/*return Response::show(400,"Database Connection Failed");*/
 			//Response::show(402,'Database Failed');
-			echo 402;
+			$result_array = array(
+				'code' => 402,
+				'username' => $info["UserName"],
+				'usertype' => $info["UserType"]
+			);
+			echo json_encode($result_array);
 		}
 	}
 }
+
 
 ?>

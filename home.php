@@ -14,6 +14,7 @@ var login_status = 0;
 var current_user = "Default User";
 var shown = false;
 var changed = false;
+var optionsShown = false;
 
 function show_register_content(){
 	var login_register_outer_content = document.getElementById('login_register_outer_content');
@@ -44,22 +45,28 @@ window.onload = function(){
 			var loginContent = document.getElementsByClassName('login_register_outer_content')[0];
 			if(shown==false){
 				shown = true;
+				$('#login_content').css('display','block');
 				startMove(loginContent,{'opacity':100});
 			}else{
 				shown = false;
 				startMove(loginContent,{'opacity':0});
+				$('#login_content').css('display','none');
 			}
 		}else if(login_status == 1){
 			var userContent = document.getElementsByClassName('user_content')[0];
 			if(shown==false){
 				shown = true;
+				$('#user_content').css('display','block');
 				startMove(userContent,{'opacity':100});
 			}else{
 				shown = false;
 				startMove(userContent,{'opacity':0});
+				$('#user_content').css('display','none');
 			}
 		}
 	});
+
+	
 	
 	//登录前，登录界面悬停显示
 	$('#login_register_outer_content').mouseleave(function(){
@@ -68,6 +75,8 @@ window.onload = function(){
 			shown = false;
 			var login_content = document.getElementsByClassName('login_register_outer_content')[0];
 			startMove(login_content,{'opacity':0});
+			$('#login_content').css('display','none');
+			
 		}
 	});
 	$('#login_register_outer_content').mouseenter(function(){
@@ -81,9 +90,65 @@ window.onload = function(){
 		shown = false;
 		var user_content = document.getElementsByClassName('user_content')[0];
 		startMove(user_content,{'opacity':0});
+		$('#user_content').css('display','none');
 	});
 	
+	//为search_range添加点击机制
+	$('.search_range').click(
+		function(){
+			if(!optionsShown){
+				optionsShown=true;
+				$('.search_range_options').css('display','block');
+			}else{
+				optionsShown=false;
+				$('.search_range_options').css('display','none');
+			}
+		}
+	);
+	
+	//为options添加点击机制
+	$('.options').click(
+		function(){
+			
+			var option = this.innerHTML;
+			$('.search_range').html(option);
+			$('.search_type').val(option);
+			
+			if(!optionsShown){
+				optionsShown=true;
+				$('.search_range_options').css('display','block');
+			}else{
+				optionsShown=false;
+				$('.search_range_options').css('display','none');
+			}
+		}
+	);
+	
+	$('#manager_div_manage').click(
+		function(){
+			var c = document.getElementById('manager_div_manage_checkdiv');
+			var op = $('#manager_div_manage_checkdiv').css('opacity');
+			if(op==0){
+				startMove(c,{'opacity':100});
+			}else{
+				startMove(c,{'opacity':0});
+			}
+		
+		}
+	);
+	
 };
+
+document.onkeydown=function(event){
+	var e = event || window.event || arguments.callee.caller.arguments[0];
+	if(e && e.keyCode==27){ // 按 Esc 
+		//要做的事情
+	}
+             
+    if(e && e.keyCode==13){ // enter 键
+	 	document.getElementById("search_button").click();
+    }
+}; 
 </script>
 </head>
 
@@ -96,7 +161,7 @@ window.onload = function(){
             </a>
         </div>
         <div class="login_register_outer_content" id="login_register_outer_content">
-            <div class="login_content" id="login_content" style="display: block;">
+            <div class="login_content" id="login_content" style="display: none;">
                 <form method="post" id="login">
                     <input type="text" name="username" class="login_content_input" placeholder="支持QQ号/邮箱/手机号登录">
                     <input type="text" name="password" class="login_content_input" placeholder="密码">
@@ -152,15 +217,27 @@ window.onload = function(){
                     <li class> 中文搜索 </li>
                 </ul>
             </div>
+            
             <div class="search_text">
             	<span class="search_button_text">搜索</span>
-            	<form method="post" action="search.php">
+            	<form method="get" action="search.php">
             		<input type="text" name="search_text" class="search_input">
-                    <input type="text" name="search_type" style="display:none">
-                	<input type="submit" class="search_button1">
+                    <input type="text" name="search_type" class="search_type" style="display:none">
+                	<input type="submit" class="search_button1" id="search_button">
                     <input type="text" name="function_id" value="search" style="display:none">
                 </form>
                 
+            </div>
+            <div class="search_range">
+            	关键字
+            </div>
+            <div class="search_range_options">
+            	<ul>
+                	<li class="options">关键字</li>
+                	<li class="options">书名</li>
+                    <li class="options">作者</li>
+                    <li class="options">书籍类别</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -184,9 +261,17 @@ window.onload = function(){
             <a href="http://www.uestc.edu.cn" class="manager_div_studio">
             	<span class="cha-vers">星辰工作室</span>
             </a>
-            <a href="http://www.uestc.edu.cn" class="manager_div_manage">
+            <div class="manager_div_manage" id="manager_div_manage">
             	<span class="cha-vers">后台管理</span>
-            </a>
+            </div>
+            <div class="manager_div_manage_checkdiv" id="manager_div_manage_checkdiv">
+                <form method="post" id="manage">
+                    <input type="text" placeholder="输入后台密匙" name="manageKey" style=" position:absolute; top:5px; left:5px; height:30px;">
+                    <input type="button" value="确定" style="position:absolute; top:5px; left:160px; height:36px; width:55px;" onClick="checkManage()">
+                    <input type="text" name="function_id" value="mag" style="display:none">
+                </form>
+            </div>
+            
         </div>
     </div>
     <div class="foot">

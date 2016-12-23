@@ -30,7 +30,10 @@ function searchText($text){
 					'bookname' =>$row['BookName'],
 					'bookID' =>$row['BookID'],
 					'bookserialID' =>$row['BookSerialID'],
-					'borrower' =>$row['Borrower']
+					'borrower' =>$row['Borrower'],
+					'author'=>$row['Author'],
+					'press'=>$row['Press'],
+					'presstime'=>$row['PressTime']
 				);
 				
 				array_push($data_array,$row_array);

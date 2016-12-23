@@ -77,6 +77,13 @@ if($_POST['function_id'] == 'log'){
 	}else{
 		sendResult(601,'搜索目标字符串不能为空');
 	}
+}else if($_POST['function_id'] == 'mag'){
+	$key=$_POST['manageKey'];
+	if($key=='manager'){
+		sendResult(700,'验证成功');
+	}else{
+		sendResult(701,'验证失败');
+	}
 }
 
 

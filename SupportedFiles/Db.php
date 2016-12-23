@@ -28,6 +28,8 @@ class Db{
 				die('mysql connect error'.mysqli_error(self::$_connectSource));
 			}
 		}
+		//给数据库添加默认编码
+		self::$_connectSource->query("SET NAMES 'UTF8'");
 		return self::$_connectSource;
 	}
 }

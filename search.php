@@ -5,10 +5,11 @@
 <title>搜索结果</title>
 <link type="text/css" rel="stylesheet" href="CSS/search_desktop.css" media="only screen and (min-width:480px)"/>
 <script type="text/javascript" src="JavaScript/PerfectMove.js"></script>
-<script type="text/javascript" src="JavaScript/SearchFunction.js"></script>
 <script type="text/javascript" src="JavaScript/JQuery/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="JavaScript/SearchFunction.js"></script>
 
 <script>
+
 //全局变量
 var login_status = 0;
 var current_user = "Default User";
@@ -44,19 +45,24 @@ window.onload = function(){
 			var loginContent = document.getElementsByClassName('login_register_outer_content')[0];
 			if(shown==false){
 				shown = true;
+				$('#login_content').css('display','block');
 				startMove(loginContent,{'opacity':100});
 			}else{
 				shown = false;
 				startMove(loginContent,{'opacity':0});
+				$('#login_content').css('display','none');
 			}
 		}else if(login_status == 1){
 			var userContent = document.getElementsByClassName('user_content')[0];
 			if(shown==false){
 				shown = true;
+				$('#user_content').css('display','block');
 				startMove(userContent,{'opacity':100});
 			}else{
 				shown = false;
 				startMove(userContent,{'opacity':0});
+				$('#user_content').css('display','none');
+				
 			}
 		}
 	});
@@ -68,6 +74,8 @@ window.onload = function(){
 			shown = false;
 			var login_content = document.getElementsByClassName('login_register_outer_content')[0];
 			startMove(login_content,{'opacity':0});
+			$('#login_content').css('display','none');
+			
 		}
 	});
 	$('#login_register_outer_content').mouseenter(function(){
@@ -81,6 +89,7 @@ window.onload = function(){
 		shown = false;
 		var user_content = document.getElementsByClassName('user_content')[0];
 		startMove(user_content,{'opacity':0});
+		$('#user_content').css('display','none');
 	});
 	
 };
@@ -95,7 +104,7 @@ window.onload = function(){
                 <span class="cha-vers" id="user_name2" style="display:none;">登录</span>
             </a>
         </div>
-        <div class="login_register_outer_content" id="login_register_outer_content">
+        <div class="login_register_outer_content" id="login_register_outer_content" >
             <div class="login_content" id="login_content" style="display: block;">
                 <form method="post" id="login">
                     <input type="text" name="username" class="login_content_input" placeholder="支持QQ号/邮箱/手机号登录">
@@ -155,7 +164,7 @@ window.onload = function(){
             <div class="search_text">
             	<span class="search_button_text">搜索</span>
             	<form method="post" id='search'>
-            		<input type="text" name="search_text" class="search_input">
+            		<input type="text" name="search_text" class="search_input" id="search_input">
                     <input type="text" name="search_type" style="display:none">
                 	<button type="button" class="search_button1" onClick="toSearch()">
                     <input type="text" name="function_id" value="search" style="display:none">
@@ -164,6 +173,13 @@ window.onload = function(){
             </div>
         </div>
     </div>
+    <div class="info_content_div" id="info_content_div">
+    	<div class="info_content">
+        	搜索结果
+        </div>
+    
+    </div>
+    
     <div class="result_content_div" id="result_content_div">
     
         
@@ -187,3 +203,18 @@ window.onload = function(){
     </div>
 </body>
 </html>
+<?php
+require_once('SupportedFiles/Search_Function.php');
+
+if(@$_GET['function_id'] == 'search'){
+	//搜索逻辑
+	$str = $_GET['search_text'];
+	echo "<script type='text/javascript'> 
+				var search_input = document.getElementById('search_input');
+				search_input.value='{$str}'; </script>";
+				
+	echo "<script type='text/javascript'> toSearch();</script>";
+}
+
+
+?>

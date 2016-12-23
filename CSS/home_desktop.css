@@ -9,6 +9,11 @@ body {
     margin: 0 auto;
     height: 100%;
     overflow-x: hidden;
+	
+	-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
 .header {
@@ -223,6 +228,51 @@ body {
 	background: url(../Image/search_field_bg.png) center no-repeat;
 	z-index:2;
 }
+.search_field .search_range {
+	position: relative;
+	float:left;
+	width:100px;
+	height:37px;
+	margin-top:55px;
+	margin-left:48px;
+	padding-top:13px;
+	background:#C10003;
+	
+	font-size:15px;
+	color:#FFFFFF;
+}
+.search_range:hover{
+	cursor:pointer;
+}
+.search_range_options {
+	position:absolute;
+	width:100px;
+	height:180px;
+	left:48px;
+	top:105px;
+	display:none;
+}
+.search_range_options ul{
+	margin-left:-40px;
+	margin-top:2px;
+	
+}
+.search_range_options ul li{
+	width:100px;
+	height:35px;
+	margin-top:3px;
+	padding-top:7px;
+	background:#000000;
+	opacity:0.8;
+	list-style:none;
+	font-size:15px;
+	color:#FFFFFF;
+	display:block;
+}
+.search_range_options ul li:hover{
+	cursor:pointer;
+	opacity:1;
+}
 .search_field .search_condition {
     position: absolute;
     width: 800px;
@@ -257,11 +307,11 @@ body {
     background: url(../Image/search_keyword_bg.png) center no-repeat;
 }
 .search_field .search_input {
-    width: 660px;
+    width: 560px;
     height: 35px;
     margin-top: 10px;
     float: left;
-    margin-left: 15px;
+    margin-left: 115px;
     font-size: 14px;
     border-style: none;
 }
@@ -365,6 +415,25 @@ body {
     font-size: 14px;
     color: #545454;
     height: 24px;
+}
+#manager_div_manage{
+	display: block;
+    margin: 40px 0 0 50px;
+    float: left;
+    text-indent: 50px;
+	text-decoration:none;
+    font-size: 14px;
+    color: #545454;
+    height: 24px;
+}
+.manager_div_manage_checkdiv{
+	position:absolute;
+	left:520px;
+	bottom:25px;
+	height:50px;
+	width:220px;
+	opacity:0;
+	background:rgba(0,0,0,1.00);
 }
 .manager_div_school {
 	background:url(../Image/schoolmain.png) left center no-repeat;
